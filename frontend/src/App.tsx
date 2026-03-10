@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import Article from "./pages/Article.tsx";
@@ -7,11 +8,13 @@ import Navbar from "./components/Navbar.tsx";
 import Sidebar from "./components/Sidebar.tsx";
 
 export default function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="app-layout">
-      <Navbar />
+      <Navbar onMenuToggle={() => setSidebarOpen((o) => !o)} />
       <div className="app-body">
-        <Sidebar />
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
