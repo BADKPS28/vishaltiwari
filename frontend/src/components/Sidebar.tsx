@@ -18,8 +18,8 @@ export default function Sidebar() {
         <NavLink to="/" end className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
           <span>🏠</span> Home
         </NavLink>
-        <NavLink to="/" className="sidebar-link">
-          <span>📄</span> Articles
+        <NavLink to="/about" className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
+          <span>👤</span> About Me
         </NavLink>
         <NavLink to="/write" className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
           <span>✏️</span> Write Post
