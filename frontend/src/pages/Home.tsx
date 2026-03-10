@@ -35,7 +35,6 @@ export default function Home() {
             I write about software engineering, artificial intelligence, and the
             lessons learned building real-world applications.
           </p>
-          <Link to="/write" className="write-hero-btn">+ Write Article</Link>
         </div>
       </header>
 

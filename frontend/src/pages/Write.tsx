@@ -2,11 +2,32 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Write() {
+  const [password, setPassword] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState(false);
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  function handleAuth(e: React.FormEvent) {
+    e.preventDefault();
+    // Verify password against backend
+    fetch("/api/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-write-password": password },
+      body: JSON.stringify({ Title: "__auth_check__", Body: "__auth_check__", authOnly: true }),
+    }).then((res) => {
+      if (res.status === 401) {
+        setAuthError(true);
+      } else {
+        setAuthenticated(true);
+        setAuthError(false);
+      }
+    }).catch(() => setAuthError(true));
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -16,10 +37,19 @@ export default function Write() {
     try {
       const res = await fetch("/api/posts", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-write-password": password,
+        },
         body: JSON.stringify({ Title: title, Body: body }),
       });
 
+      if (res.status === 401) {
+        setAuthenticated(false);
+        setError("Session expired. Please re-enter your password.");
+        setSaving(false);
+        return;
+      }
       if (!res.ok) throw new Error("Failed to save");
       const post = await res.json() as { id: string };
       navigate(`/article/${post.id}`);
@@ -29,17 +59,40 @@ export default function Write() {
     }
   }
 
+  if (!authenticated) {
+    return (
+      <div className="page">
+        <div className="container article-container">
+          <Link to="/" className="back-link">← Back to articles</Link>
+          <h1 className="article-title" style={{ borderBottom: "none", marginBottom: "2rem" }}>
+            Enter Password
+          </h1>
+          <form onSubmit={handleAuth} className="write-form">
+            <input
+              className="write-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoFocus
+            />
+            {authError && <p className="state-msg error">Wrong password.</p>}
+            <button className="write-btn" type="submit">Continue</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="page">
       <div className="container article-container">
         <Link to="/" className="back-link">← Back to articles</Link>
-
         <h1 className="article-title" style={{ borderBottom: "none", marginBottom: "2rem" }}>
           New Article
         </h1>
-
         {error && <p className="state-msg error">{error}</p>}
-
         <form onSubmit={handleSubmit} className="write-form">
           <input
             className="write-input"

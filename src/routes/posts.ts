@@ -34,9 +34,18 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// POST /api/posts — create a new post
+// POST /api/posts — create a new post (password protected)
 router.post("/", async (req, res) => {
-  const { Title, Body } = req.body as { Title?: string; Body?: string };
+  const provided = req.headers["x-write-password"];
+  const expected = process.env["WRITE_PASSWORD"];
+  if (!expected || provided !== expected) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+
+  const { Title, Body, authOnly } = req.body as { Title?: string; Body?: string; authOnly?: boolean };
+  if (authOnly) { res.json({ ok: true }); return; }
+
   if (!Title || !Body) {
     res.status(400).json({ error: "Title and Body are required" });
     return;
