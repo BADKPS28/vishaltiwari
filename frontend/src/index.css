@@ -35,11 +35,69 @@ html {
   padding: 2.5rem 1.5rem;
 }
 
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: var(--hero-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar-name {
+  color: #f1f5f9;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.navbar-name:hover {
+  color: #fff;
+}
+
+.navbar-avatar {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: border-color 0.15s;
+}
+
+.navbar-photo:hover {
+  border-color: var(--accent);
+}
+
+.navbar-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+}
+
 /* Hero */
 .hero {
   background: var(--hero-bg);
   color: var(--hero-text);
-  padding: 3.5rem 1.5rem;
+  padding: 3rem 1.5rem;
   text-align: center;
 }
 
