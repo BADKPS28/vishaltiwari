@@ -13,6 +13,7 @@ router.get("/", async (_req, res) => {
     });
     res.json(posts);
   } catch (err) {
+    console.error("GET /api/posts error:", err);
     res.status(500).json({ error: "Failed to fetch posts" });
   }
 });
