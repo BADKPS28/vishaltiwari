@@ -30,5 +30,6 @@ app.get("*", (_req, res) => {
 
 app.listen(Number(PORT), "0.0.0.0", () => {
   console.log(`Server running at http://0.0.0.0:${PORT}`);
-  console.log(`Serving frontend from: ${frontendDist}`);
+  const dbUrl = process.env["DATABASE_URL"] ?? "NOT SET";
+  console.log(`DB host: ${dbUrl.split("@")[1]?.split("/")[0] ?? "unknown"}`);
 });
