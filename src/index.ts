@@ -28,6 +28,7 @@ app.get("*", (_req, res) => {
   res.sendFile(join(frontendDist, "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(Number(PORT), "0.0.0.0", () => {
+  console.log(`Server running at http://0.0.0.0:${PORT}`);
+  console.log(`Serving frontend from: ${frontendDist}`);
 });
