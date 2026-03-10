@@ -1,0 +1,70 @@
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import type { Post } from "../types.ts";
+
+export default function Article() {
+  const { id } = useParams<{ id: string }>();
+  const [post, setPost] = useState<Post | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(`/api/posts/${id}`)
+      .then((r) => {
+        if (!r.ok) throw new Error("Not found");
+        return r.json();
+      })
+      .then((data: Post) => {
+        setPost(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError("Article not found.");
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) return <div className="page"><div className="container"><p className="state-msg">Loading...</p></div></div>;
+  if (error || !post) return (
+    <div className="page">
+      <div className="container">
+        <p className="state-msg error">{error}</p>
+        <Link to="/" className="back-link">← Back to articles</Link>
+      </div>
+    </div>
+  );
+
+  const paragraphs = (post.Body ?? "").split(/\n{2,}/);
+
+  return (
+    <div className="page">
+      <div className="container article-container">
+        <Link to="/" className="back-link">← Back to articles</Link>
+
+        <article>
+          <div className="article-date">
+            {new Date(post.created_at).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </div>
+          <h1 className="article-title">{post.Title ?? "Untitled"}</h1>
+
+          <div className="article-body">
+            {paragraphs.map((para, i) => (
+              <p key={i}>
+                {para.split("\n").map((line, j, arr) => (
+                  <span key={j}>
+                    {line}
+                    {j < arr.length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            ))}
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+}
