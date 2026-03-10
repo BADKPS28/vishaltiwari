@@ -9,9 +9,12 @@ export default function Home() {
 
   useEffect(() => {
     fetch("/api/posts")
-      .then((r) => r.json())
-      .then((data: PostSummary[]) => {
-        setPosts(data);
+      .then((r) => {
+        if (!r.ok) throw new Error("API error");
+        return r.json();
+      })
+      .then((data: unknown) => {
+        setPosts(Array.isArray(data) ? data : []);
         setLoading(false);
       })
       .catch(() => {
