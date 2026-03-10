@@ -33,4 +33,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// POST /api/posts — create a new post
+router.post("/", async (req, res) => {
+  const { Title, Body } = req.body as { Title?: string; Body?: string };
+  if (!Title || !Body) {
+    res.status(400).json({ error: "Title and Body are required" });
+    return;
+  }
+  try {
+    const post = await prisma.post.create({
+      data: { Title, Body },
+    });
+    res.status(201).json(post);
+  } catch {
+    res.status(500).json({ error: "Failed to create post" });
+  }
+});
+
 export { router as postsRouter };
