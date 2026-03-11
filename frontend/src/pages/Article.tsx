@@ -64,6 +64,27 @@ export default function Article() {
             ))}
           </div>
         </article>
+
+        {/* Author card */}
+        <div className="author-card">
+          <img
+            src="/profile.jpg"
+            alt="Vishal Tiwari"
+            className="author-photo"
+            onError={(e) => { e.currentTarget.style.display = "none"; }}
+          />
+          <div className="author-info">
+            <p className="author-label">Written by</p>
+            <p className="author-name">Vishal Tiwari</p>
+            <p className="author-bio">
+              Technology professional at Southern Glazer's, writing about AI, Microsoft 365, and digital transformation.
+            </p>
+            <div className="author-links">
+              <Link to="/about" className="author-link">About me →</Link>
+              <Link to="/" className="author-link">More articles →</Link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -25,10 +25,27 @@ export default function Home() {
 
   return (
     <div className="page">
-      <h2 className="section-title">Articles</h2>
+      {/* Hero */}
+      <div className="hero">
+        <p className="hero-greeting">Welcome</p>
+        <h1 className="hero-name">Vishal Tiwari</h1>
+        <p className="hero-tagline">
+          Writing about AI, enterprise collaboration, and the human side of digital transformation.
+        </p>
+        <Link to="/about" className="hero-btn">About me →</Link>
+      </div>
+
+      {/* Articles */}
+      <div className="section-header">
+        <h2 className="section-title">Latest Articles</h2>
+        {!loading && !error && <span className="section-count">{posts.length} posts</span>}
+      </div>
 
       {loading && <p className="state-msg">Loading...</p>}
       {error && <p className="state-msg error">{error}</p>}
+      {!loading && !error && posts.length === 0 && (
+        <p className="state-msg">No articles yet. Check back soon.</p>
+      )}
 
       <div className="post-list">
         {posts.map((post) => (
