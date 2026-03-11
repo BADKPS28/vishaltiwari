@@ -356,14 +356,21 @@ html {
   margin-bottom: 0.5rem;
 }
 
-.about-linkedin {
+.about-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.about-contact-item {
   font-size: 0.875rem;
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
 }
 
-.about-linkedin:hover { color: var(--accent-hover); }
+.about-contact-item:hover { color: var(--accent-hover); }
 
 .about-section {
   margin-bottom: 2rem;

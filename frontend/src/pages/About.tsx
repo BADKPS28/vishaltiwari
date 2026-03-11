@@ -11,14 +11,19 @@ export default function About() {
         <div>
           <h1 className="about-name">Vishal Tiwari</h1>
           <p className="about-location">📍 Fort Lauderdale, Florida, United States</p>
-          <a
-            href="https://www.linkedin.com/in/vishal-tiwari-9b164b22/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="about-linkedin"
-          >
-            LinkedIn Profile →
-          </a>
+          <div className="about-contact">
+            <a href="tel:6784278436" className="about-contact-item">
+              📱 678-427-8436
+            </a>
+            <a
+              href="https://www.linkedin.com/in/vishal-tiwari-9b164b22/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-contact-item"
+            >
+              💼 LinkedIn Profile
+            </a>
+          </div>
         </div>
       </div>
 
