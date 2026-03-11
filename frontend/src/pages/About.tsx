@@ -13,7 +13,7 @@ export default function About() {
           <p className="about-location">📍 Fort Lauderdale, Florida, United States</p>
           <div className="about-contact">
             <a href="tel:6784278436" className="about-contact-item">
-              📱 678-427-8436
+              <span>📱</span> <strong>678-427-8436</strong>
             </a>
             <a
               href="https://www.linkedin.com/in/vishal-tiwari-9b164b22/"
@@ -21,7 +21,7 @@ export default function About() {
               rel="noopener noreferrer"
               className="about-contact-item"
             >
-              💼 LinkedIn Profile
+              <span>💼</span> LinkedIn Profile
             </a>
           </div>
         </div>
