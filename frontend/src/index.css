@@ -153,8 +153,11 @@ html {
 }
 
 /* ── Sidebar ── */
+@media (min-width: 769px) {
+  .sidebar { display: none !important; }
+}
+
 .sidebar {
-  display: none;
   width: var(--sidebar-width);
   min-height: calc(100vh - var(--navbar-height));
   background: var(--sidebar-bg);
