@@ -18,6 +18,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
         <NavLink to="/" end className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Home</NavLink>
         <NavLink to="/about" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>About</NavLink>
         <NavLink to="/reviews" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Reviews</NavLink>
+        <NavLink to="/write" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Write</NavLink>
       </div>
 
       <Link to="/about" className="navbar-avatar">
