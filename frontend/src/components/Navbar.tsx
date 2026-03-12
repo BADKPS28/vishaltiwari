@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 interface NavbarProps {
   onMenuToggle: () => void;
@@ -13,6 +13,13 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
         </button>
         <Link to="/" className="navbar-name">Vishal Tiwari</Link>
       </div>
+
+      <div className="navbar-links">
+        <NavLink to="/" end className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Home</NavLink>
+        <NavLink to="/about" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>About</NavLink>
+        <NavLink to="/reviews" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Reviews</NavLink>
+      </div>
+
       <Link to="/about" className="navbar-avatar">
         <img src="/profile.jpg" alt="Vishal Tiwari" className="navbar-photo"
           onError={(e) => {
