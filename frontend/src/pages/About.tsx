@@ -43,6 +43,14 @@ export default function About() {
           intersection of AI and business — exploring how tools like Microsoft Copilot, Azure, and
           intelligent automation can transform the way teams work.
         </p>
+        <p>
+          I've built a strong foundation in .NET development and IT project management, and I'm now
+          channeling that experience into the world of AI, cloud, and DevOps. Lately, my focus has
+          been on expanding my expertise in Azure Data Factory, Synapse, and Flux, approaching each
+          new skill with a methodical, growth‑driven mindset. Beyond tech, I'm passionate about
+          learning new languages and maintaining balance through consistent wellness routines —
+          keeping both my mind and my work sharp.
+        </p>
       </section>
 
       <section className="about-section">
