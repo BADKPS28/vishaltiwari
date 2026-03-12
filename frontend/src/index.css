@@ -7,29 +7,29 @@
 }
 
 :root {
-  --bg: #3c3c50;
-  --bg-2: #444458;
-  --bg-3: #4c4c62;
-  --surface: #4e4e65;
-  --surface-2: #585870;
-  --border: rgba(255,255,255,0.14);
-  --border-hover: rgba(255,255,255,0.25);
-  --text: #f0eff4;
-  --text-muted: #7c7b8a;
-  --text-soft: #a8a7b8;
-  --accent: #8b7cf8;
-  --accent-hover: #7c6ef0;
-  --accent-glow: rgba(139, 124, 248, 0.15);
-  --gold: #c9a84c;
-  --gold-light: #e8c97a;
-  --sidebar-bg: #30303f;
+  --bg: #fafaf8;
+  --bg-2: #f4f3f0;
+  --bg-3: #eeedea;
+  --surface: #ffffff;
+  --surface-2: #f7f6f3;
+  --border: #e8e6e0;
+  --border-hover: #ccc9c0;
+  --text: #1a1814;
+  --text-muted: #888580;
+  --text-soft: #5a5750;
+  --accent: #6355d4;
+  --accent-hover: #5246c0;
+  --accent-glow: rgba(99, 85, 212, 0.1);
+  --gold: #a07830;
+  --gold-light: #c49540;
+  --sidebar-bg: #1e1c18;
   --sidebar-width: 260px;
   --navbar-height: 60px;
   --radius: 12px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,0.6);
-  --shadow-accent: 0 4px 24px rgba(139, 124, 248, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+  --shadow-accent: 0 4px 20px rgba(99, 85, 212, 0.15);
 }
 
 html {
@@ -69,11 +69,12 @@ html {
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  background: rgba(10, 10, 13, 0.92);
+  background: rgba(250, 250, 248, 0.95);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar-links {
@@ -88,9 +89,9 @@ html {
 .navbar-link {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.4rem 0.875rem;
   border-radius: 6px;
@@ -99,11 +100,11 @@ html {
 
 .navbar-link:hover {
   color: var(--text);
-  background: rgba(255,255,255,0.05);
+  background: var(--bg-2);
 }
 
 .navbar-link.active {
-  color: var(--gold-light);
+  color: var(--gold);
 }
 
 .navbar-name {
@@ -116,7 +117,7 @@ html {
   transition: color 0.2s;
 }
 
-.navbar-name:hover { color: var(--gold-light); }
+.navbar-name:hover { color: var(--gold); }
 
 .navbar-avatar {
   display: flex;
@@ -311,25 +312,26 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: transparent;
-  color: var(--gold-light);
+  background: var(--gold);
+  color: #fff;
   text-decoration: none;
   padding: 0.65rem 1.5rem;
   border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border: 1px solid rgba(201, 168, 76, 0.3);
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  letter-spacing: 0.05em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   position: relative;
   z-index: 1;
+  box-shadow: 0 2px 12px rgba(160, 120, 48, 0.3);
 }
 
 .hero-btn:hover {
-  background: rgba(201, 168, 76, 0.08);
-  border-color: var(--gold);
-  transform: translateY(-1px);
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(160, 120, 48, 0.4);
 }
 
 .hero > * { position: relative; z-index: 1; }
@@ -977,7 +979,7 @@ html {
   align-items: center;
   gap: 0.5rem;
   background: var(--gold);
-  color: #0d0d0f;
+  color: #fff;
   text-decoration: none;
   padding: 0.7rem 1.25rem;
   border-radius: 50px;
@@ -1038,7 +1040,7 @@ html {
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--text-muted);
+  background: var(--text-soft);
   border-radius: 2px;
   transition: background 0.15s;
 }
