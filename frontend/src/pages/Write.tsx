@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { api } from "../api.ts";
 
 export default function Write() {
   const [password, setPassword] = useState("");
@@ -15,11 +16,7 @@ export default function Write() {
   function handleAuth(e: React.FormEvent) {
     e.preventDefault();
     // Verify password against backend
-    fetch("/api/posts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-write-password": password },
-      body: JSON.stringify({ Title: "__auth_check__", Body: "__auth_check__", authOnly: true }),
-    }).then((res) => {
+    api.createPost("__auth_check__", "__auth_check__", password).then((res) => {
       if (res.status === 401) {
         setAuthError(true);
       } else {
@@ -35,14 +32,7 @@ export default function Write() {
     setError(null);
 
     try {
-      const res = await fetch("/api/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-write-password": password,
-        },
-        body: JSON.stringify({ Title: title, Body: body }),
-      });
+      const res = await api.createPost(title, body, password);
 
       if (res.status === 401) {
         setAuthenticated(false);

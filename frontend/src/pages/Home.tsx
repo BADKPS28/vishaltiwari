@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../api.ts";
 import type { PostSummary } from "../types.ts";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/posts")
+    api.posts()
       .then((r) => {
         if (!r.ok) throw new Error("API error");
         return r.json();

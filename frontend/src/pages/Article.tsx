@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { api } from "../api.ts";
 import type { Post } from "../types.ts";
 
 export default function Article() {
@@ -9,7 +10,7 @@ export default function Article() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`/api/posts/${id}`)
+    api.post(id!)
       .then((r) => {
         if (!r.ok) throw new Error("Not found");
         return r.json();
