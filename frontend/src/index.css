@@ -932,6 +932,55 @@ html {
   font-weight: 300;
 }
 
+/* ── Floating Review Button ── */
+.fab-review {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: #0d0d0f;
+  text-decoration: none;
+  padding: 0.7rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.fab-review:hover {
+  transform: translateY(-3px);
+  background: var(--gold-light);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.45);
+}
+
+.fab-star {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.fab-label { line-height: 1; }
+
+@media (max-width: 768px) {
+  .fab-review {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    justify-content: center;
+  }
+  .fab-label { display: none; }
+  .fab-star { font-size: 1.4rem; }
+}
+
 /* ── Hamburger ── */
 .navbar-left {
   display: flex;
