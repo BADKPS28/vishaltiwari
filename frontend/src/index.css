@@ -385,7 +385,8 @@ html {
 
 .author-links {
   display: flex;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .author-link {
@@ -394,9 +395,14 @@ html {
   color: var(--accent);
   text-decoration: none;
   transition: color 0.15s;
+  padding: 0.4rem 0.875rem;
+  background: var(--accent-light);
+  border-radius: 8px;
+  border: 1px solid #e0e7ff;
+  display: inline-block;
 }
 
-.author-link:hover { color: var(--accent-hover); }
+.author-link:hover { color: var(--accent-hover); background: #e0e7ff; }
 
 /* ── Post list ── */
 .post-list {

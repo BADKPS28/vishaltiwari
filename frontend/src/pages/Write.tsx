@@ -16,7 +16,7 @@ export default function Write() {
   function handleAuth(e: React.FormEvent) {
     e.preventDefault();
     // Verify password against backend
-    api.createPost("__auth_check__", "__auth_check__", password).then((res) => {
+    api.checkAuth(password).then((res) => {
       if (res.status === 401) {
         setAuthError(true);
       } else {
