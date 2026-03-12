@@ -21,4 +21,11 @@ export const api = {
       },
       body: JSON.stringify({ Title: title, Body: body }),
     }),
+  reviews: () => fetch(`${API_BASE}/api/reviews`),
+  submitReview: (name: string, rating: number, body: string) =>
+    fetch(`${API_BASE}/api/reviews`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, rating, body }),
+    }),
 };

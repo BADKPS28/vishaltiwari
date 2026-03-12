@@ -37,6 +37,10 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
             className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
             <span>👤</span> About Me
           </NavLink>
+          <NavLink to="/reviews" onClick={() => handleLink("/reviews")}
+            className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
+            <span>⭐</span> Reviews
+          </NavLink>
           <NavLink to="/write" onClick={() => handleLink("/write")}
             className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
             <span>✏️</span> Write Post

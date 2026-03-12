@@ -4,6 +4,7 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { postsRouter } from "./routes/posts.js";
+import { reviewsRouter } from "./routes/reviews.js";
 
 // Allow BigInt to serialize in JSON responses
 (BigInt.prototype as unknown as { toJSON: () => string }).toJSON = function () {
@@ -28,6 +29,7 @@ app.use(express.json());
 
 // API routes
 app.use("/api/posts", postsRouter);
+app.use("/api/reviews", reviewsRouter);
 
 // Serve React frontend
 const frontendDist = join(__dirname, "../frontend/dist");

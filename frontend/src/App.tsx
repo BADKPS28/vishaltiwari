@@ -4,6 +4,7 @@ import Home from "./pages/Home.tsx";
 import Article from "./pages/Article.tsx";
 import Write from "./pages/Write.tsx";
 import About from "./pages/About.tsx";
+import Reviews from "./pages/Reviews.tsx";
 import Navbar from "./components/Navbar.tsx";
 import Sidebar from "./components/Sidebar.tsx";
 
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/article/:id" element={<Article />} />
             <Route path="/write" element={<Write />} />
+            <Route path="/reviews" element={<Reviews />} />
           </Routes>
         </main>
       </div>
