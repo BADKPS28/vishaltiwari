@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function About() {
   return (
     <div className="page">
+      <Link to="/" className="back-link">← Back to articles</Link>
       <div className="about-header">
         <img
           src="/profile.jpg"

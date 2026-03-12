@@ -263,6 +263,11 @@ html {
   background: rgba(255,255,255,0.03);
 }
 
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-greeting {
   font-size: 0.78rem;
   font-weight: 600;
@@ -303,6 +308,8 @@ html {
   border: 1px solid rgba(255,255,255,0.15);
   transition: background 0.2s, color 0.2s, transform 0.2s;
   backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 1;
 }
 
 .hero-btn:hover {
