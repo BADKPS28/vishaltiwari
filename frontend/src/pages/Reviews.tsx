@@ -71,23 +71,47 @@ export default function Reviews() {
     ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
     : null;
 
+  const distribution = [5, 4, 3, 2, 1].map((star) => ({
+    star,
+    count: reviews.filter((r) => r.rating === star).length,
+    pct: reviews.length ? Math.round((reviews.filter((r) => r.rating === star).length / reviews.length) * 100) : 0,
+  }));
+
   return (
     <div className="page">
       <Link to="/" className="back-link">← Back to articles</Link>
 
       {/* Header */}
       <div className="reviews-header">
-        <h1 className="reviews-title">Reviews</h1>
-        {avgRating && (
-          <div className="reviews-avg">
-            <span className="reviews-avg-score">{avgRating}</span>
-            <Stars rating={Math.round(Number(avgRating))} />
-            <span className="reviews-avg-count">{reviews.length} review{reviews.length !== 1 ? "s" : ""}</span>
+        <div className="reviews-header-top">
+          <div>
+            <h1 className="reviews-title">Reviews</h1>
+            <p className="reviews-subtitle">
+              Worked with me or read my writing? I'd love to hear your thoughts.
+            </p>
+          </div>
+          {avgRating && (
+            <div className="reviews-avg">
+              <span className="reviews-avg-score">{avgRating}</span>
+              <Stars rating={Math.round(Number(avgRating))} />
+              <span className="reviews-avg-count">{reviews.length} review{reviews.length !== 1 ? "s" : ""}</span>
+            </div>
+          )}
+        </div>
+
+        {reviews.length > 0 && (
+          <div className="rating-distribution">
+            {distribution.map(({ star, count, pct }) => (
+              <div key={star} className="rating-bar-row">
+                <span className="rating-bar-label">{star}★</span>
+                <div className="rating-bar-track">
+                  <div className="rating-bar-fill" style={{ width: `${pct}%` }} />
+                </div>
+                <span className="rating-bar-count">{count}</span>
+              </div>
+            ))}
           </div>
         )}
-        <p className="reviews-subtitle">
-          Worked with me or read my writing? I'd love to hear your thoughts.
-        </p>
       </div>
 
       {/* Submit form */}

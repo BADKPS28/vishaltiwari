@@ -278,10 +278,32 @@ html {
 
 /* ── Hero ── */
 .hero {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   padding: 3rem 0 2.5rem;
   border-bottom: 1px solid var(--border);
   position: relative;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-text { flex: 1; }
+
+.hero-photo-wrap {
+  flex-shrink: 0;
+}
+
+.hero-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--surface);
+  box-shadow: 0 0 0 2px var(--border-hover), var(--shadow-md);
 }
 
 .hero-greeting {
@@ -290,26 +312,67 @@ html {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--gold);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .hero-name {
   font-family: 'Playfair Display', serif;
-  font-size: 3.25rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--text);
   letter-spacing: -0.02em;
   line-height: 1.1;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .hero-tagline {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-soft);
   line-height: 1.75;
-  max-width: 520px;
-  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-bottom: 1.75rem;
   font-weight: 300;
+}
+
+/* ── Topics ── */
+.topics-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.topics-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.topic-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  cursor: default;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.topic-tag:hover {
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .hero-btn {
@@ -399,13 +462,25 @@ html {
   width: 0.6rem;
 }
 
-.post-date {
-  font-size: 0.75rem;
-  color: var(--text-muted);
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 0.5rem;
+}
+
+.post-date {
+  font-size: 0.73rem;
+  color: var(--text-muted);
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.post-reading-time {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .post-title {
@@ -449,13 +524,25 @@ html {
 
 .back-link:hover { color: var(--gold-light); }
 
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .article-date {
   font-size: 0.75rem;
   color: var(--text-muted);
-  margin-bottom: 1rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.article-read-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .article-title {
@@ -798,32 +885,43 @@ html {
   border-bottom: 1px solid var(--border);
 }
 
+.reviews-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
 .reviews-title {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   font-weight: 800;
   color: var(--text);
   letter-spacing: -0.02em;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .reviews-avg {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.4rem;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .reviews-avg-score {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--gold);
   line-height: 1;
 }
 
 .reviews-avg-count {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -833,6 +931,51 @@ html {
   color: var(--text-soft);
   font-weight: 300;
   line-height: 1.7;
+}
+
+/* Rating distribution */
+.rating-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 360px;
+}
+
+.rating-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rating-bar-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.rating-bar-track {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rating-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.rating-bar-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  width: 16px;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 .review-form-wrap {
@@ -973,6 +1116,69 @@ html {
   font-weight: 300;
 }
 
+/* ── Footer ── */
+.footer {
+  background: var(--sidebar-bg);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2rem 4rem;
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-name {
+  font-family: 'Playfair Display', serif;
+  color: #f0eff4;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: #4a4a5a;
+}
+
+.footer-links {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: #4a4a5a;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.footer-link:hover {
+  color: #a8a7b8;
+  background: rgba(255,255,255,0.04);
+}
+
+@media (max-width: 768px) {
+  .footer { padding: 1.5rem 1.25rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
 /* ── Floating Review Button ── */
 .fab-review {
   position: fixed;
@@ -1081,6 +1287,8 @@ html {
   .sidebar-backdrop { display: block; }
 
   .page, .container { padding: 1.5rem 1.25rem; }
+  .hero-content { flex-direction: column-reverse; align-items: flex-start; }
+  .hero-photo { width: 80px; height: 80px; }
   .hero-name { font-size: 2.25rem; }
   .article-title { font-size: 1.85rem; }
   .about-header { flex-direction: column; text-align: center; gap: 1.25rem; }

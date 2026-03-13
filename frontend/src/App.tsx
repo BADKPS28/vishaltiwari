@@ -7,6 +7,7 @@ import About from "./pages/About.tsx";
 import Reviews from "./pages/Reviews.tsx";
 import Navbar from "./components/Navbar.tsx";
 import Sidebar from "./components/Sidebar.tsx";
+import Footer from "./components/Footer.tsx";
 
 function FloatingReviewBtn() {
   const location = useLocation();
@@ -38,6 +39,7 @@ export default function App() {
         </main>
       </div>
       <FloatingReviewBtn />
+      <Footer />
     </div>
   );
 }
