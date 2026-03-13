@@ -1,40 +1,60 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
+
+const SECTIONS = [
+  { id: "home", label: "Home" },
+  { id: "articles", label: "Articles" },
+  { id: "about", label: "About" },
+  { id: "reviews", label: "Reviews" },
+];
 
 export default function Navbar() {
+  const [params, setParams] = useSearchParams();
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const active = params.get("section") ?? "home";
 
-  function scrollTo(id: string) {
+  function goTo(id: string) {
     if (isHome) {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      setParams({ section: id });
     } else {
-      window.location.href = `/#${id}`;
+      window.location.href = `/?section=${id}`;
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <Link to="/" className="navbar-name">Vishal Tiwari</Link>
+        <button className="navbar-name" onClick={() => goTo("home")}>
+          Vishal Tiwari
+        </button>
       </div>
 
       <div className="navbar-links">
-        <button className="navbar-link" onClick={() => scrollTo("home")}>Home</button>
-        <button className="navbar-link" onClick={() => scrollTo("articles")}>Articles</button>
-        <button className="navbar-link" onClick={() => scrollTo("about")}>About</button>
-        <button className="navbar-link" onClick={() => scrollTo("reviews")}>Reviews</button>
+        {SECTIONS.map(({ id, label }) => (
+          <button
+            key={id}
+            className={`navbar-link${active === id && isHome ? " active" : ""}`}
+            onClick={() => goTo(id)}
+          >
+            {label}
+          </button>
+        ))}
         <Link to="/write" className="navbar-link">Write</Link>
       </div>
 
-      <Link to="/about" className="navbar-avatar">
-        <img src="/profile.jpg" alt="Vishal Tiwari" className="navbar-photo"
+      <button className="navbar-avatar" onClick={() => goTo("about")}>
+        <img
+          src="/profile.jpg"
+          alt="Vishal Tiwari"
+          className="navbar-photo"
           onError={(e) => {
             e.currentTarget.style.display = "none";
-            e.currentTarget.nextElementSibling?.removeAttribute("style");
+            (e.currentTarget.nextElementSibling as HTMLElement)?.removeAttribute("style");
           }}
         />
         <span className="navbar-initials" style={{ display: "none" }}>VT</span>
-      </Link>
+      </button>
     </nav>
   );
 }

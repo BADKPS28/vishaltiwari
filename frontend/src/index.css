@@ -157,6 +157,10 @@ html {
   text-decoration: none;
   letter-spacing: 0.01em;
   transition: color 0.2s;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .navbar-name:hover { color: var(--gold); }
@@ -165,6 +169,10 @@ html {
   display: flex;
   align-items: center;
   text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .navbar-photo {
