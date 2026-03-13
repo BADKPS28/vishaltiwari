@@ -96,6 +96,10 @@ html {
   padding: 0.4rem 0.875rem;
   border-radius: 6px;
   transition: color 0.2s, background 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .navbar-link:hover {
@@ -103,8 +107,46 @@ html {
   background: var(--bg-2);
 }
 
-.navbar-link.active {
-  color: var(--gold);
+.navbar-link.active { color: var(--gold); }
+
+/* ── Single page sections ── */
+.single-page { width: 100%; }
+
+.sp-section {
+  border-bottom: 1px solid var(--border);
+}
+
+.sp-section:last-child { border-bottom: none; }
+
+.sp-about-section { background: var(--surface); }
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: var(--text-soft);
+  text-decoration: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid var(--border-hover);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-btn-ghost:hover {
+  background: var(--bg-2);
+  border-color: var(--text-muted);
+  color: var(--text);
 }
 
 .navbar-name {

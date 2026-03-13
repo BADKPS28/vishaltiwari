@@ -1,43 +1,32 @@
-import { useState } from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
-import Home from "./pages/Home.tsx";
+import { Routes, Route, useLocation } from "react-router-dom";
+import SinglePage from "./pages/SinglePage.tsx";
 import Article from "./pages/Article.tsx";
 import Write from "./pages/Write.tsx";
-import About from "./pages/About.tsx";
-import Reviews from "./pages/Reviews.tsx";
 import Navbar from "./components/Navbar.tsx";
-import Sidebar from "./components/Sidebar.tsx";
 import Footer from "./components/Footer.tsx";
 
 function FloatingReviewBtn() {
   const location = useLocation();
-  if (location.pathname === "/reviews") return null;
+  if (location.pathname !== "/") return null;
   return (
-    <Link to="/reviews" className="fab-review" title="Leave a Review">
+    <a href="#reviews" className="fab-review" title="Leave a Review">
       <span className="fab-star">★</span>
       <span className="fab-label">Review</span>
-    </Link>
+    </a>
   );
 }
 
 export default function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
   return (
     <div className="app-layout">
-      <Navbar onMenuToggle={() => setSidebarOpen((o) => !o)} />
-      <div className="app-body">
-        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="app-main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/article/:id" element={<Article />} />
-            <Route path="/write" element={<Write />} />
-            <Route path="/reviews" element={<Reviews />} />
-          </Routes>
-        </main>
-      </div>
+      <Navbar />
+      <main className="app-main">
+        <Routes>
+          <Route path="/" element={<SinglePage />} />
+          <Route path="/article/:id" element={<Article />} />
+          <Route path="/write" element={<Write />} />
+        </Routes>
+      </main>
       <FloatingReviewBtn />
       <Footer />
     </div>

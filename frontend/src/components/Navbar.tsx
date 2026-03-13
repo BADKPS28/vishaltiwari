@@ -1,24 +1,29 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-interface NavbarProps {
-  onMenuToggle: () => void;
-}
+export default function Navbar() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
-export default function Navbar({ onMenuToggle }: NavbarProps) {
+  function scrollTo(id: string) {
+    if (isHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = `/#${id}`;
+    }
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <button className="hamburger" onClick={onMenuToggle} aria-label="Toggle menu">
-          <span /><span /><span />
-        </button>
         <Link to="/" className="navbar-name">Vishal Tiwari</Link>
       </div>
 
       <div className="navbar-links">
-        <NavLink to="/" end className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Home</NavLink>
-        <NavLink to="/about" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>About</NavLink>
-        <NavLink to="/reviews" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Reviews</NavLink>
-        <NavLink to="/write" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>Write</NavLink>
+        <button className="navbar-link" onClick={() => scrollTo("home")}>Home</button>
+        <button className="navbar-link" onClick={() => scrollTo("articles")}>Articles</button>
+        <button className="navbar-link" onClick={() => scrollTo("about")}>About</button>
+        <button className="navbar-link" onClick={() => scrollTo("reviews")}>Reviews</button>
+        <Link to="/write" className="navbar-link">Write</Link>
       </div>
 
       <Link to="/about" className="navbar-avatar">
