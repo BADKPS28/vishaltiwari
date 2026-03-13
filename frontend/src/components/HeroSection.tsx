@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 const TOPICS = ["AI & Automation", "Microsoft 365", "Azure", "DevOps", "Digital Transformation", "Enterprise Tech"];
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   return (
     <section id="home" className="sp-section">
       <div className="page">
@@ -13,8 +16,8 @@ export default function HeroSection() {
                 Writing about AI, enterprise collaboration, and the human side of digital transformation.
               </p>
               <div className="hero-actions">
-                <a href="#about" className="hero-btn">About me</a>
-                <a href="#articles" className="hero-btn-ghost">Read articles</a>
+                <button className="hero-btn" onClick={() => navigate("/?section=about")}>About me</button>
+                <button className="hero-btn-ghost" onClick={() => navigate("/?section=articles")}>Read articles</button>
               </div>
             </div>
             <div className="hero-photo-wrap">
